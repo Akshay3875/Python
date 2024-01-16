@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code Translator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 50px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        button {
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Morse Code Translator</h1>
+
+        <!-- Form for user input and conversion choice -->
+        <form action="/convert" method="post">
+            <div class="form-group">
+                <label for="user_input">Enter text or Morse code:</label>
+                <input type="text" class="form-control" id="user_input" name="user_input" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="choice">Choose conversion:</label>
+                <select class="form-control" id="choice" name="choice" required>
+                    <option value="text_to_morse">Text to Morse Code</option>
+                    <option value="morse_to_text">Morse Code to Text</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Convert</button>
+        </form>
+
+        <!-- Display user input and result -->
+        {% if user_input %}
+            <div class="result">
+                <p class="lead"><strong>User Input:</strong> {{ user_input }}</p>
+                <p class="lead"><strong>Result:</strong> {{ result }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (required for Bootstrap dropdowns) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
