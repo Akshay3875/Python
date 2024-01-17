@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Result</h1>
+        <div class="result-container">
+            <div class="result-info">
+                <p>You chose: <span>{{ user_choice }}</span></p>
+                <p>Computer chose: <span>{{ computer_choice }}</span></p>
+            </div>
+            <p class="result">{{ result }}</p>
+            <p class="play-again"><a href="/">Play Again</a></p>
+        </div>
+    </div>
+</body>
+</html>
