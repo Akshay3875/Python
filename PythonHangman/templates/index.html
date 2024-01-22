@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Hangman Game</title>
+</head>
+<body>
+    <h1>Hangman Game</h1>
+
+    <div id="hangman-image">
+        <img src="{{ url_for('static', filename='hangman_{{ attempts_left }}.png') }}" alt="Hangman">
+    </div>
+
+    <div id="word-display">
+        {% for letter in guessed_word %}
+            {{ letter }}
+        {% endfor %}
+    </div>
+
+    <div id="attempts-left">
+        Attempts Left: {{ attempts_left }}
+    </div>
+
+    {% if game_over %}
+        <div id="game-over-message">
+            {% if "_" not in guessed_word %}
+                <p>Congratulations! You guessed the word!</p>
+            {% else %}
+                <p>Game Over! The word was "{{ chosen_word }}".</p>
+            {% endif %}
+            <a href="{{ url_for('reset') }}">Play Again</a>
+        </div>
+    {% else %}
+        <form action="/check_letter" method="post">
+            <label for="letter">Enter a letter: </label>
+            <input type="text" id="letter" name="letter" maxlength="1" required>
+            <button type="submit">Check</button>
+        </form>
+    {% endif %}
+</body>
+</html>
